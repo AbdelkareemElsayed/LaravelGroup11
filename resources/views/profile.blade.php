@@ -8,14 +8,19 @@
 </head>
 <body>
 
- <?php
- $message = 'Hello ,  Root Account';
-
- ?>
-
-<p>{{ $message }} </p>
 
 
+   <h3><?php echo $title;?></h3>
+<p>
+  <?php
+     foreach ($data as $key => $value) {
+         # code...
+         echo '* '.$key.' : '.$value.'<br>';
+     }
+
+    ?>
+
+</p>
 
 </body>
 </html>

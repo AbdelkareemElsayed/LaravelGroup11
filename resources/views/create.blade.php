@@ -15,25 +15,40 @@
 
 
 
+
+
+
     <div class="container">
         <h2>Register</h2>
 
-        <form action="<?php  echo url('/Store?id=20130299');?>" method="post">
+        @if ($errors->any())
 
-           <input type="hidden" name="_token" value="<?php echo csrf_token()?>">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
+        <form action="{{ url('/Store') }}" method="post">
+
+            @csrf
 
 
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
                 <input type="text" class="form-control" id="exampleInputName" aria-describedby="" name="name"
-                    placeholder="Enter Name">
+                    placeholder="Enter Name" value="{{ old('name') }}">
             </div>
 
 
             <div class="form-group">
                 <label for="exampleInputEmail">Email address</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    name="email" placeholder="Enter email">
+                    name="email" placeholder="Enter email" value="{{old('email')}}">
             </div>
 
             <div class="form-group">

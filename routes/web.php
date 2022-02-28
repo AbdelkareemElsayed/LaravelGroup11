@@ -46,9 +46,10 @@ Route::get('/Message/{name}/{id?}',function ($val1,$val2 = null){
 
 Route::get('Create',[userController::class,'create']);
 Route::post('Store',[userController::class,'store']);
+Route::get('Profile',[userController::class,'loadData']);
 
 
-
+Route::view('Test','testSession');
 
 
 
