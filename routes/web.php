@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +19,38 @@ Route::get('/', function () {
 });
 
 
-Route::get('/Message',function (){
+Route::get('/Message/{name}/{id?}',function ($val1,$val2 = null){
 
-    echo 'Test Message From Laravel .... ';
-});
+    echo 'welcome ,  '.$val1.'& id = '.$val2;
+})->where([ 'id' => '[0-9]+' , 'name' => '[a-zA-Z]+' ]  );
 
 
 // Route::get('/Profile',function (){
 //     return view('profile');
 // });
 
-Route::view('/Profile','profile');
+// Route::view('/Profile','profile');
+
+//url?id=2030&email=
+
+// Route::get('delete/{id}',function (){});
+// delete.php?id=22
+// delete/22
+
+
+// Route::view('Create','create');
+// Route::post('Store',function (){
+//     echo 'Store Data';
+// });
+
+
+Route::get('Create',[userController::class,'create']);
+Route::post('Store',[userController::class,'store']);
+
+
+
+
+
 
 /*
 get
