@@ -80,24 +80,24 @@ class userController extends Controller
 public function loadData(){
 
     # Student Data
-    $data = ["Name" => "Root Account" , "Email" => "Root@yahoo.com" , "Age" => 20 , "GPA" => 4];
-    $title = "Student Data";
-    /*
-    1- Array  []   **
-    2- with()      **
-    3- compact()
-    */
+    // $data = ["Name" => "Root Account" , "Email" => "Root@yahoo.com" , "Age" => 20 , "GPA" => 4];
+    // $title = "Student Data";
+    // /*
+    // 1- Array  []   **
+    // 2- with()      **
+    // 3- compact()
+    // */
 
-    // return view('profile',["studentData" => $data , "title" => "Student Data"]);
+    // // return view('profile',["studentData" => $data , "title" => "Student Data"]);
 
-    // return view('profile')->with(["studentData" =>  $data  , "title" => "Student Data"  ]);
+    // // return view('profile')->with(["studentData" =>  $data  , "title" => "Student Data"  ]);
 
 
-       session()->put("Message","Welcome To Laravel Session");  // $_SESSION[KEY] =VALUE
-       session()->put("Message2","Welcome To Laravel Session22222");
-       // session()->flash("Message","Welcome To Laravel Session");
+    //    session()->put("Message","Welcome To Laravel Session");  // $_SESSION[KEY] =VALUE
+    //    session()->put("Message2","Welcome To Laravel Session22222");
+    //    // session()->flash("Message","Welcome To Laravel Session");
 
-    return view('profile',compact('data','title'));
+    // return view('profile',compact('data','title'));
 
 }
 

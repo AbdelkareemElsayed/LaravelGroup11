@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\studentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,11 @@ Route::get('Profile',[userController::class,'loadData']);
 
 Route::view('Test','testSession');
 
+
+# Student Routes .......
+Route::get('Student/',[studentController::class,'index']);
+Route::get('Student/Create',[studentController::class,'create']);
+Route::post('Student/Store',[studentController::class,'Store']);
 
 
 /*
