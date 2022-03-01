@@ -36,14 +36,23 @@
 
 
         <div class="page-header">
-            <h1>Read Students </h1>
+            <h1>Read Students </h1>      {{  "Welcome , ".auth()->user()->name  }}
+            <br>
+
+          @php
+
+            // dd(session()->has('test'));
+
+            echo session()->get('Message');
+          @endphp
+
             <br>
 
 
 
         </div>
 
-        <a href="">+ Account</a>
+        <a href="{{url('/Student/Create')}}">+ Account</a>   ||     <a href="{{url('/Student/LogOut')}}">+ LogOut</a>
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
@@ -64,8 +73,8 @@
                 <td>{{ $value->email}}</td>
 
                 <td>
-                    <a href='' class='btn btn-danger m-r-1em'>Delete</a>
-                    <a href='' class='btn btn-primary m-r-1em'>Edit</a>
+                    <a href='{{url('/Student/delete/'.$value->id)}}' class='btn btn-danger m-r-1em'>Delete</a>
+                    <a href='{{url('/Student/edit/'.$value->id)}}' class='btn btn-primary m-r-1em'>Edit</a>
                 </td>
             </tr>
 

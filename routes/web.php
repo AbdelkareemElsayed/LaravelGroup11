@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/Message/{name}/{id?}',function ($val1,$val2 = null){
 
     echo 'welcome ,  '.$val1.'& id = '.$val2;
-})->where([ 'id' => '[0-9]+' , 'name' => '[a-zA-Z]+' ]  );
+})->where([ 'name' => '[a-zA-Z]+' ]  );
 
 
 // Route::get('/Profile',function (){
@@ -57,6 +57,13 @@ Route::view('Test','testSession');
 Route::get('Student/',[studentController::class,'index']);
 Route::get('Student/Create',[studentController::class,'create']);
 Route::post('Student/Store',[studentController::class,'Store']);
+Route::get('Student/delete/{id}',[studentController::class,'delete']);
+Route::get('Student/edit/{id}',[studentController::class,'edit']);
+Route::put('Student/update/{id}',[studentController::class,'update']);
+
+Route::get("Student/Login",[studentController::class,'login']);
+Route::post("Student/doLogin",[studentController::class,'doLogin']);
+Route::get("Student/LogOut",[studentController::class,'LogOut']);
 
 
 /*
