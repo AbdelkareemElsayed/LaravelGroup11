@@ -64,6 +64,12 @@ Route::get('Student/delete/{id}',[studentController::class,'delete']);
 Route::get('Student/edit/{id}',[studentController::class,'edit']);
 Route::put('Student/update/{id}',[studentController::class,'update']);
 Route::get("Student/LogOut",[studentController::class,'LogOut']);
+
+
+# Blog .....
+// Route::get('Blog/getData',[blogController::class,'fetchdata']);
+Route::resource('Blog',blogController::class);
+
 });
 
 Route::get("Student/Login",[studentController::class,'login']);
@@ -71,9 +77,7 @@ Route::post("Student/doLogin",[studentController::class,'doLogin']);
 
 
 
-# Blog .....
-Route::get('Blog/getData',[blogController::class,'fetchdata']);
-Route::resource('Blog',blogController::class);
+
 
 
 //    /Blog           GET    (index)     >>>>    Route::get('Blog',[BlogController::class,'index']);
