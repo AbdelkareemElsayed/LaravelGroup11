@@ -10,22 +10,21 @@ class studentController extends Controller
 {
     //
 
-
      public function index(){
          // code .....
 
 
-        if(auth()->check()){
+        // if(auth()->check()){
 
         $data =  student :: orderBy('id','desc')->get();
 
         //->take(2)
 
          return view('students.index',["data" => $data]);
-        }else{
-            return redirect(url('/Student/Login'));
+        // }else{
+        //     return redirect(url('/Student/Login'));
 
-        }
+        // }
      }
 
 
