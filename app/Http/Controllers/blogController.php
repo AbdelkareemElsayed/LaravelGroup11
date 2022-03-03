@@ -34,6 +34,7 @@ class blogController extends Controller
            $data =  DB::table('blogs')->join('users', 'users.id', '=', 'blogs.user_id')->select('blogs.*', 'users.name as userName')->get();
 
 
+
         return view('blogs.index', ['data' => $data]);
     }
 
