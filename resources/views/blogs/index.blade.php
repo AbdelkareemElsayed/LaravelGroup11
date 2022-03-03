@@ -36,7 +36,7 @@
 
 
         <div class="page-header">
-            <h1>Read Blogs </h1>      {{  "Welcome , ".auth()->user()->name  }}
+            <h1>{{trans('labels.r_blogs')}} </h1>    {{  trans('labels.welcome').", ".auth()->user()->name  }}
             <br>
 
           @php
@@ -52,8 +52,9 @@
 
         </div>
 
-        <a href="{{url('/Blog/create')}}">+ Blog</a>   ||     <a href="{{url('/Student/LogOut')}}">+ LogOut</a>
-
+        <a href="{{url('/Blog/create')}}">+ {{trans('labels.blog')}}</a>   ||     <a href="{{url('/Student/LogOut')}}">+ {{trans('labels.logOut')}}</a>
+        <br>
+        <a href="{{url('Lang/en')}}">EN</a>  ||   <a href="{{url('Lang/ar')}}">ع</a>
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
             <tr>

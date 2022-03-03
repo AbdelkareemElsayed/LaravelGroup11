@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\blog;
+use Illuminate\Support\Facades\DB;
 
 class blogController extends Controller
 {
+
+
+    public function __construct()
+    {
+         $this->middleware('checkLogin',['except' => ['show']]);
+
+    }
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +29,10 @@ class blogController extends Controller
     {
         //
 
-        $data = blog::join('users', 'users.id', '=', 'blogs.user_id')->select('blogs.*', 'users.name as userName')->get();
+        // $data = blog::join('users', 'users.id', '=', 'blogs.user_id')->select('blogs.*', 'users.name as userName')->get();
+
+           $data =  DB::table('blogs')->join('users', 'users.id', '=', 'blogs.user_id')->select('blogs.*', 'users.name as userName')->get();
+
 
         return view('blogs.index', ['data' => $data]);
     }
@@ -56,7 +72,14 @@ class blogController extends Controller
             $data['image'] = $FinalName;
             $data['user_id'] = auth()->user()->id;
 
-            $op = blog::create($data);
+
+
+            // $op = blog::create($data);
+
+            $op = DB::table('blogs')->insert($data);
+
+
+
 
             if ($op) {
                 $message = 'data inserted';
@@ -81,7 +104,10 @@ class blogController extends Controller
     public function show($id)
     {
         //
-        $data = blog::find($id);
+        // $data = blog::find($id);
+
+        $data = DB::table('blogs')->find($id);
+
 
         return view('blogs.show', ['data' => $data]);
 
@@ -141,7 +167,10 @@ class blogController extends Controller
 
         # Update OP ...
 
-        $op = blog::find($id)->update($data);
+        // $op = blog::find($id)->update($data);
+
+           $op = DB::table('blogs')->WHERE('id',$id)->update($data);
+
 
         // $op = blog::where('id',$id)->update($data);
 
@@ -168,7 +197,10 @@ class blogController extends Controller
         # Fetch Data
         $data =  blog::find($id);
 
-        $op =  blog::find($id)->delete();
+        // $op =  blog::find($id)->delete();
+
+        $op = DB::table('blogs')->where('id',$id)->delete();
+
         if ($op) {
             unlink(public_path('blogImages/' . $data->image));
             $message = "Raw Removed";

@@ -34,9 +34,14 @@
     <!-- container -->
     <div class="container">
 
+    @php
+        // echo   app()->getLocale();
+        // app()->setLocale('ar');
+    @endphp
+
 
         <div class="page-header">
-            <h1>Read Students </h1>      {{  "Welcome , ".auth()->user()->name  }}
+            <h1>{{  trans('labels.r_u') }}</h1>      {{  trans('labels.welcome').", ".auth()->user()->name  }}
             <br>
 
           @php
@@ -52,15 +57,19 @@
 
         </div>
 
-        <a href="{{url('/Student/Create')}}">+ Account</a>   ||     <a href="{{url('/Student/LogOut')}}">+ LogOut</a>
+        <a href="{{url('/Student/Create')}}">+ {{  trans('labels.account') }}</a>   ||          <a href="{{url('/Blog')}}">+ {{  trans('labels.blog') }}</a>   ||      <a href="{{url('/Student/LogOut')}}">+ {{  trans('labels.logOut') }}</a>
+
+   <br>
+        <a href="{{url('Lang/en')}}">EN</a>  ||   <a href="{{url('Lang/ar')}}">ع</a>
+
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>action</th>
+                <th>{{  trans('labels.id') }}</th>
+                <th>{{  trans('labels.name') }}</th>
+                <th>{{  trans('labels.email') }}</th>
+                <th>{{  trans('labels.action') }}</th>
             </tr>
 
 
@@ -73,8 +82,8 @@
                 <td>{{ $value->email}}</td>
 
                 <td>
-                    <a href='{{url('/Student/delete/'.$value->id)}}' class='btn btn-danger m-r-1em'>Delete</a>
-                    <a href='{{url('/Student/edit/'.$value->id)}}' class='btn btn-primary m-r-1em'>Edit</a>
+                    <a href='{{url('/Student/delete/'.$value->id)}}' class='btn btn-danger m-r-1em'>{{  trans('labels.delete') }}</a>
+                    <a href='{{url('/Student/edit/'.$value->id)}}' class='btn btn-primary m-r-1em'>{{  trans('labels.edit') }}</a>
                 </td>
             </tr>
 

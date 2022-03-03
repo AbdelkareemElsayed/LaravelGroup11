@@ -16,6 +16,10 @@ use App\Http\Controllers\studentController;
 |
 */
 
+
+
+Route::middleware(['Lang'])->group(function(){
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -65,11 +69,6 @@ Route::get('Student/edit/{id}',[studentController::class,'edit']);
 Route::put('Student/update/{id}',[studentController::class,'update']);
 Route::get("Student/LogOut",[studentController::class,'LogOut']);
 
-
-# Blog .....
-// Route::get('Blog/getData',[blogController::class,'fetchdata']);
-Route::resource('Blog',blogController::class);
-
 });
 
 Route::get("Student/Login",[studentController::class,'login']);
@@ -78,7 +77,21 @@ Route::post("Student/doLogin",[studentController::class,'doLogin']);
 
 
 
+# Blog .....
+// Route::get('Blog/getData',[blogController::class,'fetchdata']);
+Route::resource('Blog',blogController::class);
 
+
+
+
+
+Route::get('Lang/{lang}', function ($lang){
+
+    session()->put('lang',$lang);
+    return back();
+});
+
+});
 
 //    /Blog           GET    (index)     >>>>    Route::get('Blog',[BlogController::class,'index']);
 //    /Blog/create    GET    (Create)    >>>>    Route::get('Blog/create',[BlogController::class,'create']);
